@@ -12,11 +12,11 @@ int prev_count = 0;
 bool port_state;
 bool port_lock = true;
 
-int km_total;  //îáùèé ïðîáåã àâòîìîáèëÿ, êðîìå òîãî, ýòà ïåðåìåííàÿ èñïîëüçóòñÿ äëÿ ðàñ÷¸òîâ
+int km_total;  //Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¿Ñ€Ð¾Ð±ÐµÐ³ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»Ñ, ÐºÑ€Ð¾Ð¼Ðµ Ñ‚Ð¾Ð³Ð¾, ÑÑ‚Ð° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑ‚ÑÑ Ð´Ð»Ñ Ñ€Ð°ÑÑ‡Ñ‘Ñ‚Ð¾Ð²
 float km_total_prev;
-float km_local;  //òåêóùèé (ñóòî÷íûé) ïðîáåã àâòîìîáèëÿ, êîòîðûé ìîæíî ñáðîñèòü
-int km_total_nums[6]; //îáùèé ïðîáåã, íî êàæäàÿ öèôðà ïî îòäåëüíîñòè
-int km_local_nums[5]; //òåêóùèé ïðîáåã, íî êàæäàÿ öèôðà ïî îòäåëüíîñòè
+float km_local;  //Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ (ÑÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ð¹) Ð¿Ñ€Ð¾Ð±ÐµÐ³ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ
+int km_total_nums[6]; //Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¿Ñ€Ð¾Ð±ÐµÐ³, Ð½Ð¾ ÐºÐ°Ð¶Ð´Ð°Ñ Ñ†Ð¸Ñ„Ñ€Ð° Ð¿Ð¾ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸
+int km_local_nums[5]; //Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð¿Ñ€Ð¾Ð±ÐµÐ³, Ð½Ð¾ ÐºÐ°Ð¶Ð´Ð°Ñ Ñ†Ð¸Ñ„Ñ€Ð° Ð¿Ð¾ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸
 
 int keyConnect;
 int keyResetKM;
@@ -32,10 +32,10 @@ int ValueToServo(float input_value, float value_max, float deg_max){
         input_value = 0;
     }
 
-    //0.0 ... 1.0, íàñêîëüêî ïîâ¸ðíóòà ñòðåëêà ê ìàêñ. çíà÷åíèþ
+    //0.0 ... 1.0, Ð½Ð°ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð²Ñ‘Ñ€Ð½ÑƒÑ‚Ð° ÑÑ‚Ñ€ÐµÐ»ÐºÐ° Ðº Ð¼Ð°ÐºÑ. Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑŽ
     float value_coeff = (input_value / value_max);
 
-    //float deg_coeff = (rotation_coeff * deg_max) / servo_max_deg; //360.0; //0...1, íàñêîëüêî óãîë áëèçîê ê 360 ãðàäóñà
+    //float deg_coeff = (rotation_coeff * deg_max) / servo_max_deg; //360.0; //0...1, Ð½Ð°ÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑƒÐ³Ð¾Ð» Ð±Ð»Ð¸Ð·Ð¾Ðº Ðº 360 Ð³Ñ€Ð°Ð´ÑƒÑÐ°
     //result = 180 * deg_coeff;
 
     result = deg_max * value_coeff;
@@ -44,7 +44,7 @@ int ValueToServo(float input_value, float value_max, float deg_max){
 }
 
 void prepare_kilometrage(){
-    km_total = Car.m_kilometrage / 1000; //983041; //îáùèé êèëîìåòðàæ
+    km_total = Car.m_kilometrage / 1000; //983041; //Ð¾Ð±Ñ‰Ð¸Ð¹ ÐºÐ¸Ð»Ð¾Ð¼ÐµÑ‚Ñ€Ð°Ð¶
     km_local += (Car.m_kilometrage - km_total_prev) / 1000.0;
     km_total_prev = Car.m_kilometrage;
 
@@ -53,7 +53,7 @@ void prepare_kilometrage(){
         km_total /= 10;
     }
 
-    km_total = km_local; //ñóòî÷íûé êèëîìåòðàæ
+    km_total = km_local; //ÑÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ð¹ ÐºÐ¸Ð»Ð¾Ð¼ÐµÑ‚Ñ€Ð°Ð¶
 
     for (int i = 3; i >= 0; i--){
         km_local_nums[i] = km_total % 10;
@@ -61,7 +61,7 @@ void prepare_kilometrage(){
         //std::cout << km_total_nums[i] << " ";
         //std::cout << km_local_nums[i] << " ";
     }
-    km_local_nums[4] = (km_local - (int)km_local) * 10; //äåñÿòè÷íûé ðàçðÿä
+    km_local_nums[4] = (km_local - (int)km_local) * 10; //Ð´ÐµÑÑÑ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ñ€Ð°Ð·Ñ€ÑÐ´
 
     //std::cout << std::endl;
     //std::cout << km_total_nums[0] + km_total_nums[1] * 10 << " ";
@@ -85,22 +85,22 @@ void TimedProcess(int execute_time_ms){
         data[5] = 255 * Car.m_damageLevel;
         data[6] = Car.m_lightsState;
         data[7] = Car.m_handbrakeState;
-        data[8] = 0;  //óêàçàòåëè ïîâîðîòà
-        //ïðîáåã îáùèé
+        data[8] = 0;  //ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»Ð¸ Ð¿Ð¾Ð²Ð¾Ñ€Ð¾Ñ‚Ð°
+        //Ð¿Ñ€Ð¾Ð±ÐµÐ³ Ð¾Ð±Ñ‰Ð¸Ð¹
         data[9]  = km_total_nums[0];
         data[10] = km_total_nums[1];
         data[11] = km_total_nums[2];
         data[12] = km_total_nums[3];
         data[13] = km_total_nums[4];
         data[14] = km_total_nums[5];
-        //ïðîáåã äíåâíîé
+        //Ð¿Ñ€Ð¾Ð±ÐµÐ³ Ð´Ð½ÐµÐ²Ð½Ð¾Ð¹
         data[15] = km_local_nums[0];
         data[16] = km_local_nums[1];
         data[17] = km_local_nums[2];
         data[18] = km_local_nums[3];
         data[19] = km_local_nums[4];
 
-        data[20] = 210; //ïðîâåðî÷íîå ÷èñëî
+        data[20] = 210; //Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¾Ñ‡Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾
 
         if (!port_state){
             COM.Open();
