@@ -1,0 +1,127 @@
+# depslib dependency file v1.0
+1649022262 source:f:\arduino\exe_cb_arduino_server\project\core\config_utils.cpp
+	"config_utils.h"
+
+1649022322 f:\arduino\exe_cb_arduino_server\project\core\config_utils.h
+	<windows.h>
+	<iostream>
+	<string>
+
+1673290174 source:f:\arduino\exe_cb_arduino_server\project\core\core.cpp
+	"core.h"
+
+1657216811 f:\arduino\exe_cb_arduino_server\project\core\core.h
+	<windows.h>
+	<iostream>
+	"../objects/Vehicle.h"
+	"../objects/Port.h"
+	"../input/input.h"
+
+1657215924 f:\arduino\exe_cb_arduino_server\project\objects\vehicle.h
+	<windows.h>
+	<iostream>
+
+1672252646 f:\arduino\exe_cb_arduino_server\project\objects\port.h
+	<windows.h>
+	<iostream>
+
+1653330302 source:f:\arduino\exe_cb_arduino_server\project\core\math_basic.cpp
+	<iostream>
+	"math_basic.h"
+
+1655111485 f:\arduino\exe_cb_arduino_server\project\core\math_basic.h
+	<math.h>
+	"../core/Vector3D.h"
+
+1653341364 f:\arduino\exe_cb_arduino_server\project\core\vector3d.h
+	<cmath>
+
+1652958850 source:f:\arduino\exe_cb_arduino_server\project\core\vector2d.cpp
+	"Vector2D.h"
+
+1652958850 f:\arduino\exe_cb_arduino_server\project\core\vector2d.h
+
+1653341228 source:f:\arduino\exe_cb_arduino_server\project\core\vector3d.cpp
+	"Vector3D.h"
+
+1655111276 source:f:\arduino\exe_cb_arduino_server\project\input\input.cpp
+	"input.h"
+
+1655111599 f:\arduino\exe_cb_arduino_server\project\input\input.h
+	<windows.h>
+	<iostream>
+
+1672345124 source:f:\arduino\exe_cb_arduino_server\project\objects\port.cpp
+	"Port.h"
+
+1657216154 source:f:\arduino\exe_cb_arduino_server\project\objects\vehicle.cpp
+	"Vehicle.h"
+
+1673265862 source:f:\arduino\exe_cb_arduino_server\main.cpp
+	<iostream>
+	"windows.h"
+	"project/core/core.h"
+
+1753635967 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\main.cpp
+	<iostream>
+	"windows.h"
+	"project/core/core.h"
+
+1753635703 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\core.h
+	<windows.h>
+	<iostream>
+	"../objects/Vehicle.h"
+	"../objects/Port.h"
+	"../input/input.h"
+
+1657215924 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\objects\vehicle.h
+	<windows.h>
+	<iostream>
+
+1753635244 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\objects\port.h
+	<windows.h>
+	<iostream>
+
+1655111599 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\input\input.h
+	<windows.h>
+	<iostream>
+
+1649022262 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\config_utils.cpp
+	"config_utils.h"
+
+1649022322 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\config_utils.h
+	<windows.h>
+	<iostream>
+	<string>
+
+1653330302 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\math_basic.cpp
+	<iostream>
+	"math_basic.h"
+
+1655111485 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\math_basic.h
+	<math.h>
+	"../core/Vector3D.h"
+
+1653341364 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\vector3d.h
+	<cmath>
+
+1652958850 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\vector2d.cpp
+	"Vector2D.h"
+
+1652958850 g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\vector2d.h
+
+1653341228 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\vector3d.cpp
+	"Vector3D.h"
+
+1655111276 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\input\input.cpp
+	"input.h"
+
+1753635906 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\objects\port.cpp
+	"Port.h"
+
+1657216154 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\objects\vehicle.cpp
+	"Vehicle.h"
+
+1753635703 source:g:\dev\arduino\d2_panel_2025\exe_cb_arduino_server\project\core\core.cpp
+	"core.h"
+
