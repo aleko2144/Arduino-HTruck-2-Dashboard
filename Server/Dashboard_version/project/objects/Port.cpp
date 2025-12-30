@@ -11,7 +11,7 @@ Port::~Port(){
 
 void Port::Open(){
     if (!isOpened){
-        CloseHandle(hPort); //если ранее порт был открыт
+        CloseHandle(hPort); //РµСЃР»Рё СЂР°РЅРµРµ РїРѕСЂС‚ Р±С‹Р» РѕС‚РєСЂС‹С‚
 
         char* returnedString = new char[256];
         GetPrivateProfileStringA("common", "port", "COM1", returnedString, 256, ".\\server.cfg");
@@ -23,7 +23,7 @@ void Port::Open(){
         //dcbSerialParams = {0};
 
         if (hPort == INVALID_HANDLE_VALUE) {
-            //MessageBox(NULL, "Failed to open port / Не удалось открыть порт", "Error / Ошибка", MB_OK);
+            //MessageBox(NULL, "Failed to open port / РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ РїРѕСЂС‚", "Error / РћС€РёР±РєР°", MB_OK);
             std::cout << "Failed to open port " << sPortName << std::endl;
             return;
         }
@@ -32,7 +32,7 @@ void Port::Open(){
 
         if (!GetCommState(hPort, &dcbSerialParams))
         {
-            //MessageBox(NULL, "Failed to get port params / Ошибка получения параметров порта", "Error / Ошибка", MB_OK);
+            //MessageBox(NULL, "Failed to get port params / РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ РїРѕСЂС‚Р°", "Error / РћС€РёР±РєР°", MB_OK);
             std::cout << "Failed to get port " << sPortName << " params" << std::endl;
             return;
         }
@@ -44,7 +44,7 @@ void Port::Open(){
 
         if(!SetCommState(hPort, &dcbSerialParams))
         {
-            //MessageBox(NULL, "Failed to set port params / Ошибка установки параметров порта", "Error / Ошибка", MB_OK);
+            //MessageBox(NULL, "Failed to set port params / РћС€РёР±РєР° СѓСЃС‚Р°РЅРѕРІРєРё РїР°СЂР°РјРµС‚СЂРѕРІ РїРѕСЂС‚Р°", "Error / РћС€РёР±РєР°", MB_OK);
             std::cout << "Failed to set port " << sPortName << " params" << std::endl;
             return;
         }
@@ -77,8 +77,8 @@ void Port::Read(){
     char sReceivedChar;
     int counter = 0;
     while(counter <= 4) {
-        ReadFile(hPort, &sReceivedChar, 1, &iSize, 0);  // получаем 1 байт
-        if(iSize > 0){   // если что-то принято, выводим
+        ReadFile(hPort, &sReceivedChar, 1, &iSize, 0);  // РїРѕР»СѓС‡Р°РµРј 1 Р±Р°Р№С‚
+        if(iSize > 0){   // РµСЃР»Рё С‡С‚Рѕ-С‚Рѕ РїСЂРёРЅСЏС‚Рѕ, РІС‹РІРѕРґРёРј
             std::cout << sReceivedChar;
             counter++;
         }
