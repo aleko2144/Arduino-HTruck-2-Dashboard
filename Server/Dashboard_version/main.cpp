@@ -11,13 +11,13 @@ int ViewerPtrVal_old;
 int ViewerPtr_current;
 
 void Process(){
-    ReadProcessMemory(hProcess, (LPVOID)0x6D2098, &ViewerPtr_current, sizeof(ViewerPtr), 0); // читаем наш адресс из памяти
+    ReadProcessMemory(hProcess, (LPVOID)0x6D2098, &ViewerPtr_current, sizeof(ViewerPtr), 0); // С‡РёС‚Р°РµРј РЅР°С€ Р°РґСЂРµСЃСЃ РёР· РїР°РјСЏС‚Рё
 
-    if (ViewerPtr_current && ViewerPtrVal_old != ViewerPtr_current && ViewerPtr_current) { //если указатель не пустой и указатели разные
-        //cout << "Viewer pointer updated / Указатель на Viewer обновлён" << endl;
-        cout << "Player data found\nОбнаружены данные игрока\n\n" << endl;
+    if (ViewerPtr_current && ViewerPtrVal_old != ViewerPtr_current && ViewerPtr_current) { //РµСЃР»Рё СѓРєР°Р·Р°С‚РµР»СЊ РЅРµ РїСѓСЃС‚РѕР№ Рё СѓРєР°Р·Р°С‚РµР»Рё СЂР°Р·РЅС‹Рµ
+        //cout << "Viewer pointer updated / РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Viewer РѕР±РЅРѕРІР»С‘РЅ" << endl;
+        cout << "Player data found\nРћР±РЅР°СЂСѓР¶РµРЅС‹ РґР°РЅРЅС‹Рµ РёРіСЂРѕРєР°\n\n" << endl;
 
-        cout << "Waiting for user's command to connect to device\nОжидание команды пользователя на подключение к панели\n\n" << endl;
+        cout << "Waiting for user's command to connect to device\nРћР¶РёРґР°РЅРёРµ РєРѕРјР°РЅРґС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє РїР°РЅРµР»Рё\n\n" << endl;
 
         ReadProcessMemory(hProcess, (LPVOID)0x6D2098, &ViewerPtr, sizeof(ViewerPtr), 0); //ViewerPtr = (int*)0x6D2098;
         ViewerPtrVal_old = ViewerPtr;
@@ -35,23 +35,23 @@ void Process(){
 void FindEXE(){
     HWND hwnd = FindWindowA(NULL, "King of the Road");
     if (hwnd != NULL){
-        DWORD ProcId; // Переменная хранящая в себе ID процесса
-        GetWindowThreadProcessId(hwnd, &ProcId); // получение ID процесса
-        hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, ProcId); // handle будет открывать для вашей программы вход в окно (если что поправьте)
+        DWORD ProcId; // РџРµСЂРµРјРµРЅРЅР°СЏ С…СЂР°РЅСЏС‰Р°СЏ РІ СЃРµР±Рµ ID РїСЂРѕС†РµСЃСЃР°
+        GetWindowThreadProcessId(hwnd, &ProcId); // РїРѕР»СѓС‡РµРЅРёРµ ID РїСЂРѕС†РµСЃСЃР°
+        hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, ProcId); // handle Р±СѓРґРµС‚ РѕС‚РєСЂС‹РІР°С‚СЊ РґР»СЏ РІР°С€РµР№ РїСЂРѕРіСЂР°РјРјС‹ РІС…РѕРґ РІ РѕРєРЅРѕ (РµСЃР»Рё С‡С‚Рѕ РїРѕРїСЂР°РІСЊС‚Рµ)
 
         if (ProcId != NULL){
-            cout << "Connected to game, waiting...\nПодключение с игрой установлено, ожидание...\n\n" << endl;
+            cout << "Connected to game, waiting...\nРџРѕРґРєР»СЋС‡РµРЅРёРµ СЃ РёРіСЂРѕР№ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ, РѕР¶РёРґР°РЅРёРµ...\n\n" << endl;
             while(true){
                 Process();
             }
         }
         else{
-            cout << "Process not found\nПроцесс не обнаружен (игра не запущена?)\n\n" << endl;
+            cout << "Process not found\nРџСЂРѕС†РµСЃСЃ РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅ (РёРіСЂР° РЅРµ Р·Р°РїСѓС‰РµРЅР°?)\n\n" << endl;
             system("pause");
             exit(1);
         }
     } else {
-        cout << "Window not found\nОкно игры не найдено (игра не запущена?)\n\n" << endl;
+        cout << "Window not found\nРћРєРЅРѕ РёРіСЂС‹ РЅРµ РЅР°Р№РґРµРЅРѕ (РёРіСЂР° РЅРµ Р·Р°РїСѓС‰РµРЅР°?)\n\n" << endl;
         system("pause");
         exit(1);
     }
